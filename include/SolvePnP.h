@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Author: Barimu
+ * @Date: 2022-10-30 00:10:23
+ * @LastEditors: Barimu
+ * @LastEditTime: 2022-11-01 00:50:16
+ */
 
 #ifndef RM2022_SOLVEPNP_H
 #define RM2022_SOLVEPNP_H
@@ -11,11 +19,14 @@
 using namespace std;
 using namespace cv;
 
+/**
+ * @description: pnp类
+ */
 class SOLVEPNP
 {
 public:
    
-    vector<Point2d> picture_points;
+    vector<Point2d> picture_points;           //相机坐标下的四个点
     
     float distance;
 

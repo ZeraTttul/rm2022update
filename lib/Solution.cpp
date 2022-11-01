@@ -34,7 +34,7 @@ void Solution :: sol() {
 	//HikCamera MVS_cap; // 初始化相机
     //	MVS_cap.CamInfoShow(); // 显示图像参数信息
    
-    VideoCapture cap ("E:\\VSCode\\Production\\Rgb\\Video\\blueVideo3.mp4");
+    VideoCapture cap ("D://BaiduNetdiskDownload//1.mp4");
 
     while (true) {
 
@@ -53,45 +53,46 @@ void Solution :: sol() {
         frame.copyTo(binary);//展示效果
         frame.copyTo(frame1);      
         
-        armors finalarmor;
+        armors finalarmor;                          
         armor_detector armor;
         vector<armors> armors_possible;
         vector<armors> armors;
-        armor.hi=-1;
-        armor.hh=0;
         armor.maxh=100;
         armor.t=-1;
         armor.selectLightbar(frame,binary,armors_possible);
-        if(armor.hi!=-1)armor.selectrightarmor(armors_possible,armors,binary);
-        if(armors.size()!=0)armor.selectfinalarmor(finalarmor,armors,binary);
-
+        if(armors_possible.size()!=0)armor.selectrightarmor(armors_possible,armors,binary);
         
+        if(armors.size()!=0)
+        {
+                armor.selectfinalarmor(finalarmor,armors,binary);
+     
 #ifdef PREDICT
-        k.predict(finalarmor,binary,k);
+                k.predict(finalarmor,binary);
 #endif  
 
-        SOLVEPNP pnp;
-        pnp.caculate(finalarmor);
+                SOLVEPNP pnp;
+                pnp.caculate(finalarmor);
 
 #ifdef IMSHOW
-        imshow("okey", binary);
+                imshow("okey", binary);
 #endif
 
-        waitKey(30);
+                waitKey(30);
 #ifdef CLOCK
 
-        finish = clock();
-        totaltime = (double)(finish - start) / CLOCKS_PER_SEC;
-        sum += totaltime;
-        times+=1;
-        if (sum > 1)
-        {
-            cout <<"times"<< times << endl;
-            times = 0;
-            sum = 0;
-        }
-        std::cout << "Time" << totaltime << endl;
+                finish = clock();
+                totaltime = (double)(finish - start) / CLOCKS_PER_SEC;
+                sum += totaltime;
+                times+=1;
+                if (sum > 1)
+                {
+                        cout <<"times"<< times << endl;
+                        times = 0;
+                        sum = 0;
+                }
+                std::cout << "Time" << totaltime << endl;
 #endif
+        }
     }
 }
 #endif //RM2022_SOLUTION_CPP

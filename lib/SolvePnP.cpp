@@ -1,4 +1,11 @@
-
+/*
+ * @Description: 姿态解算
+ * @Version: 1.0
+ * @Author: Barimu
+ * @Date: 2022-10-30 00:10:23
+ * @LastEditors: Barimu
+ * @LastEditTime: 2022-10-31 22:20:36
+ */
 #ifndef RM2022_SOLVEPNP_CPP
 #define RM2022_SOLVEPNP_CPP
 
@@ -7,6 +14,10 @@
 using namespace std;
 using namespace cv;
 
+/**
+ * @description: 调用pnp
+ * @param {armors} finalarmor
+ */
 void SOLVEPNP ::caculate(armors finalarmor) {
 
     //Serial uart(BR115200, WORDLENGTH_8B, STOPBITS_1, PARITY_NONE, HWCONTROL_NONE);
@@ -50,8 +61,13 @@ void SOLVEPNP ::caculate(armors finalarmor) {
 #endif
 }
 
+/**
+ * @description: 进行pnp解算
+ * @param {int} flag 通过flag的值判断大小装甲板
+ */
 float SOLVEPNP::PNP(int flag)
 {
+    //写入真实值
     if(flag==0)
     {
             model_points.push_back(Point3d(-66.75f, -24.25f, 0));

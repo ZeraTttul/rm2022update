@@ -45,7 +45,6 @@ private:
     clock_t start, finish;
     double totaltime,sum=0;
     int times = 0;
-
     Mat frame, binary, frame1;
 
 public:

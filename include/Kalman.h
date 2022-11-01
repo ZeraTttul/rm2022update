@@ -1,3 +1,11 @@
+/*
+ * @Description: 卡尔曼预测
+ * @Version: 1.0
+ * @Author: Barimu
+ * @Date: 2022-10-30 00:10:23
+ * @LastEditors: Barimu
+ * @LastEditTime: 2022-11-01 00:51:07
+ */
 #ifndef RM2022_KALMAN_H
 #define RM2022_KALMAN_H
 
@@ -9,7 +17,7 @@
 #include <opencv2/video/tracking.hpp>
 #include "../include/Solution.h"
 #include "../include/SolvePnP.h"
-#include "../include/armor_detector.h"
+#include "../include/armor.h"
 #include <queue>
 #include <vector>
 #include <iostream>
@@ -17,17 +25,19 @@
 using namespace std;
 using namespace cv;
 
+/**
+ * @description: 卡尔曼类
+ */
 class kalman
 {
 public:
     const int stateNum = 4;                          //状态值4×1向量(x,y,△x,△y)
     const int measureNum = 2;                        //测量值2×1向量(x,y)
     KalmanFilter KF;
-    Mat measurement;                           //测量值
-    Mat prediction;
-public:
-void init(KalmanFilter KF);
-Point kal(float x,float y);
-void predict(armors &finalarmor,Mat binary,kalman &k);
+    Mat measurement;                                 //测量值
+    Mat prediction;                                  //预测值
+    void init(KalmanFilter KF);
+    void predict(armors &finalarmor,Mat binary);
+    Point kal(float x,float y);
 };
 #endif
