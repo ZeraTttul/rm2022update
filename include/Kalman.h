@@ -3,8 +3,8 @@
  * @Version: 1.0
  * @Author: Barimu
  * @Date: 2022-10-30 00:10:23
- * @LastEditors: Barimu
- * @LastEditTime: 2022-11-01 00:51:07
+ * @LastEditors: ZeraTul ZeraTttul@gmail.com
+ * @LastEditTime: 2022-11-02 00:43:34
  */
 #ifndef RM2022_KALMAN_H
 #define RM2022_KALMAN_H
@@ -15,7 +15,6 @@
 #include <opencv2/imgproc/types_c.h>
 #include <opencv2/core/core.hpp>
 #include <opencv2/video/tracking.hpp>
-#include "../include/Solution.h"
 #include "../include/SolvePnP.h"
 #include "../include/armor_detector.h"
 #include <queue>
