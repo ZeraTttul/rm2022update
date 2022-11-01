@@ -17,7 +17,7 @@
 #include <opencv2/video/tracking.hpp>
 #include "../include/Solution.h"
 #include "../include/SolvePnP.h"
-#include "../include/armor.h"
+#include "../include/armor_detector.h"
 #include <queue>
 #include <vector>
 #include <iostream>

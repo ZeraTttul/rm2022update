@@ -10,6 +10,7 @@
 #define ARMOR_DECTOR_CPP
 
 #include "../include/armor_detector.h"
+#include "../include/Solution.h"
 
 using namespace std;
 using namespace cv;
