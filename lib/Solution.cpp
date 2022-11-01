@@ -53,7 +53,8 @@ void Solution :: sol() {
         frame.copyTo(binary);//展示效果
         frame.copyTo(frame1);      
         
-        armors finalarmor;                          
+        armors finalarmor;
+        ArmorTracker trackarmor;                          
         armor_detector armor;
         vector<armors> armors_possible;
         vector<armors> armors;
@@ -68,6 +69,7 @@ void Solution :: sol() {
      
 #ifdef PREDICT
                 k.predict(finalarmor,binary);
+                trackarmor.track(finalarmor);//追踪器
 #endif  
 
                 SOLVEPNP pnp;

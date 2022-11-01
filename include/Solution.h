@@ -23,6 +23,7 @@
 #include "rgb.h"
 #include "Kalman.h"
 #include "armor_detector.h"
+#include "armor_tracker.h"
 
 //#define NX
 //#define RED
