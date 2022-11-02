@@ -37,6 +37,6 @@ public:
     Mat prediction;                                  //预测值
     void init(KalmanFilter KF);
     void predict(armors &finalarmor,Mat binary);
-    Point kal(float x,float y);
+    Point2f kal(float x,float y);
 };
 #endif

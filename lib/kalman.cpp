@@ -35,9 +35,9 @@ void kalman :: init(KalmanFilter KF) {
  * @return {*}
  * @author: Barimu
  */
-Point kalman::kal(float x,float y)
+Point2f kalman::kal(float x,float y)
 {
-    Point center;   
+    Point2f center;   
     prediction = KF.predict();                  //进行一次预测
     measurement.at<float>(0) = x;               //写入真实值
 	measurement.at<float>(1) = y;		
@@ -46,7 +46,7 @@ Point kalman::kal(float x,float y)
                 KF.correct(measurement);        //更新
                 prediction = KF.predict();
                 measurement.at<float>(0) = prediction.at<float>(0);
-		        measurement.at<float>(1) = prediction.at<float>(1); 
+		        measurement.at<float>(1) = prediction.at<float>(1);
         }
         center.x=prediction.at<float>(0);
         center.y=prediction.at<float>(1);

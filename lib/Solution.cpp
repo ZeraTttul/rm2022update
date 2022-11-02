@@ -49,12 +49,11 @@ void Solution :: sol() {
         //if (frame1.empty()) { // 相机开启线程需要一定时间
         //    continue;
         //}
-	resize(frame1,frame,frame.size(),0.5,0.5);
+		resize(frame1,frame,frame.size(),0.5,0.5);
         frame.copyTo(binary);//展示效果
         frame.copyTo(frame1);      
         
-        armors finalarmor;
-        ArmorTracker trackarmor;                          
+        armors finalarmor;                      
         armor_detector armor;
         vector<armors> armors_possible;
         vector<armors> armors;
@@ -66,12 +65,17 @@ void Solution :: sol() {
         if(armors.size()!=0)
         {
                 armor.selectfinalarmor(finalarmor,armors,binary);
-     
+                m_isDetected = 1;
+        }
 #ifdef PREDICT
-                k.predict(finalarmor,binary);
-                trackarmor.track(finalarmor);//追踪器
-#endif  
 
+            ArmorTracker trackArmor;
+            trackArmor.track(finalarmor, m_isDetected);//追踪器
+            k.predict(finalarmor,binary);
+                
+#endif  
+        if(armors.size()!=0)
+        {
                 SOLVEPNP pnp;
                 pnp.caculate(finalarmor);
 

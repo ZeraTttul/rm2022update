@@ -47,6 +47,7 @@ private:
     double totaltime,sum=0;
     int times = 0;
     Mat frame, binary, frame1;
+    bool m_isDetected = 0;
 
 public:
     void sol();

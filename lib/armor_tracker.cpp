@@ -10,11 +10,26 @@
 #define _ARMOR_TRACTER_CPP
 
 #include "../include/armor_tracker.h"
-#include "../include/armor_detector.h"
 
-void ArmorTracker :: track(armors &armor)
+void ArmorTracker :: track(armors &final_armor, bool isDetected)
 {
+	armors armor = final_armor;
+    if(!isDetected)
+    {
+		
+    }
+    else 
+    {
+		while(!m_predict_que.empty()) m_predict_que.pop();
+		m_armor_que.push(armor);
 
+		if(1);                                                          //装甲板中心点瞬移 x 个装甲板宽度后 init卡尔曼滤波器
+
+		Point2f predict_pt = k.kal(armor.center.x, armor.center.y);
+		armor.center = predict_pt;
+		m_predict_que.push(armor);
+
+    }
 }
 
 #endif
