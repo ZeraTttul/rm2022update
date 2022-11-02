@@ -63,17 +63,14 @@ void Solution :: sol() {
         armor.selectLightbar(frame,binary,armors_possible);
         if(armors_possible.size()!=0)armor.selectrightarmor(armors_possible,armors,binary);
         
-        if(armors.size()!=0)
-        {
-                armor.selectfinalarmor(finalarmor,armors,binary);
-                m_isDetected = 1;
-        }
+        if(armors.size()!=0) m_isDetected = 1;
+        armor.selectfinalarmor(finalarmor,armors,binary);
 #ifdef PREDICT
 
-            // ArmorTracker trackArmor;
-            // trackArmor.track(finalarmor, m_isDetected, binary);//追踪器
-			if(armors.size()!=0)
-            k.predict(finalarmor,binary);
+            ArmorTracker trackArmor;
+            trackArmor.track(finalarmor, m_isDetected, binary);//追踪器
+			// if(armors.size()!=0)
+            // k.predict(finalarmor,binary);
                 
 #endif  
         if(armors.size()!=0)
