@@ -34,7 +34,8 @@ void Solution :: sol() {
 	//HikCamera MVS_cap; // 初始化相机
     //	MVS_cap.CamInfoShow(); // 显示图像参数信息
    
-    VideoCapture cap ("E:\\VSCode\\production\\rm2022\\Video\\blueVideo3.mp4");
+    VideoCapture cap ("E:\\VSCode\\production\\rgb\\Video\\blueVideo3.mp4");
+	// VideoCapture cap(2);
 
     while (true) {
 
@@ -44,12 +45,12 @@ void Solution :: sol() {
 
         //frame = imread("D:/BaiduNetdiskDownload/photo/5.jpg");
 
-        cap.read(frame1);
-	//MVS_cap.ReadImg(frame1); // 相机取图
+        cap.read(frame);
+		//MVS_cap.ReadImg(frame1); // 相机取图
         //if (frame1.empty()) { // 相机开启线程需要一定时间
         //    continue;
         //}
-		resize(frame1,frame,frame.size(),0.5,0.5);
+		//resize(frame1,frame,frame.size(),0.5,0.5);
         frame.copyTo(binary);//展示效果
         frame.copyTo(frame1);      
         
@@ -69,8 +70,9 @@ void Solution :: sol() {
         }
 #ifdef PREDICT
 
-            ArmorTracker trackArmor;
-            trackArmor.track(finalarmor, m_isDetected);//追踪器
+            // ArmorTracker trackArmor;
+            // trackArmor.track(finalarmor, m_isDetected, binary);//追踪器
+			if(armors.size()!=0)
             k.predict(finalarmor,binary);
                 
 #endif  

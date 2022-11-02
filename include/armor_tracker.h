@@ -10,8 +10,9 @@ class ArmorTracker
         queue<armors> m_armor_que;
         queue<armors> m_predict_que;
         kalman k;
+        float target_change_threshold = 0;
     public:
-        void track(armors &armor, bool isDetected);
+        void track(armors &armor, bool isDetected, Mat binary);
 };
 
 
