@@ -7,6 +7,8 @@
 
 #include "../include/Solution.h"
 
+// extern kalman k;
+
 void Solution :: sol() {
 
     //定义KalmanFilter类并初始化

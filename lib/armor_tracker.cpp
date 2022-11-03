@@ -12,30 +12,18 @@
 
 #include "../include/armor_tracker.h"
 
+// extern kalman k;
+
 void ArmorTracker :: track(armors &final_armor, bool isDetected, Mat binary)
 {
-    KalmanFilter KK(k.stateNum,k.measureNum,0);
-    k.KF=KK;
-    //定义测量值
-    k.measurement = Mat::zeros(k.measureNum,
-                               1,
-                               CV_32F);
-
-
-    //转移矩阵 A
-    k.KF.transitionMatrix = (Mat_<float>(k.stateNum,
-                                         k.stateNum) <<
-                                        1, 0, 1, 0,
-										0, 1, 0, 1,
-										0, 0, 1, 0,
-										0, 0, 0, 1);
-    k.init(k.KF);
+    
 	armors armor = final_armor;
 	Point2f center;
     if(!isDetected)
     {
 		if(!m_predict_que.empty())
 		{
+            // cout << "!ispredict" << endl;
 			center = m_predict_que.front().center;
 			center = k.kal(center.x, center.y);
 			armor.center = center;
